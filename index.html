@@ -9,16 +9,34 @@
   </head>
   <body>
     <div id="container">
-      <div id="main-Books"></div>
-      <table>
-        <thead>
-          <tr>
-            <th colspan="4">Book Library</th>
-          </tr>
-          <tr id="tableProperties"></tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
+      <div id="addContainer">
+        <button id="showForm">Add a Book</button>
+        <div id="addFormContainer" class="formContainer" style="display: none">
+          <form action="" method="get" id="bookInput">
+            <label for="Title">Title</label>
+            <input type="text" name="Title" id="Title" required />
+            <label for="Author">Author</label>
+            <input type="text" name="Author" id="Author" required />
+            <label for="Pages">Pages</label>
+            <input type="number" name="Pages" id="Pages" required />
+
+            <span>Have you read it yet?</span>
+            <input type="checkbox" name="Read" id="Read" unchecked required />
+          </form>
+          <button id="submitBookForm">Save</button>
+        </div>
+      </div>
+      <div id="tableContainer">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="4">Book Library</th>
+            </tr>
+            <tr id="tableProperties"></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
     </div>
   </body>
   <script src="script.js"></script>

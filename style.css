@@ -1,4 +1,41 @@
 table,
 td {
-    border: 1px solid #333;
+  margin: 1rem;
+  border: 1px solid #333;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+}
+#container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin: 2rem 2rem;
+}
+
+.formContainer {
+  background-color: gainsboro;
+  justify-items: center;
+  align-items: center;
+  max-width: 30rem;
+  padding: 0.5rem;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+input {
+  margin: 2px;
+}
+button {
+  background-color: white;
+  border: black solid 1px;
+  font-size: 1.2rem;
+  margin: 0.5rem;
 }

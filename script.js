@@ -1,5 +1,18 @@
 let myLibrary = [];
-/* eslint-disable require-jsdoc */
+
+submitBookForm.addEventListener('click', addToLibrary);
+
+showFormButton = document
+  .getElementById('showForm')
+  .addEventListener('click', showForm);
+function showForm() {
+  if (addFormContainer.style.display == 'none') {
+    addFormContainer.style.display = 'grid';
+  } else {
+    addFormContainer.style.display = 'none';
+  }
+}
+
 class Books {
   constructor(title, author, pages, read) {
     this.Title = title;
@@ -7,20 +20,36 @@ class Books {
     this.Pages = pages;
     this.Read = read;
   }
-  get wasRead() {
-    return this.Read ? 'Already read.' : 'Still unread.';
-  }
+  // get info() {
+  //   return `${this.title}, by ${this.author}. ${this.pages} pages. ${this.wasRead}`;
+  // }
+  // get wasRead() {
+  //   return this.Read ? 'Already read.' : 'Still unread.';
+  // }
 }
+Books.prototype.info = function () {
+  return `${this.title}, by ${this.author}. ${this.pages} pages. ${this.wasRead}`;
+};
+Books.prototype.wasRead = function () {
+  return this.Read ? 'Already read.' : 'Still unread.';
+};
 
-// Books.prototype.info = function () {
-//   return `${this.title}, by ${this.author}. ${this.pages} pages. ${this.wasRead}`;
-// };
-
-function addToLibrary(book) {
-  myLibrary.push(book);
+function addToLibrary() {
+  const submitForm = document.querySelectorAll('#bookInput input');
+  newBook = new Books();
+  submitForm.forEach((x) => {
+    if (x.id === 'Read') {
+      newBook[x.id] = x.checked;
+    } else {
+      newBook[x.id] = x.value;
+    }
+  });
+  myLibrary.push(newBook);
+  viewLibrary();
 }
 
 function viewLibrary() {
+  tableBody.innerHTML = '';
   myLibrary.forEach(function (singleBook) {
     let books = document.createElement('tr');
     tableProperties.innerHTML = '';
@@ -29,7 +58,7 @@ function viewLibrary() {
       let dataBody = document.createElement('td');
       props.textContent = bookData[0];
       dataBody.textContent =
-        bookData[0] === 'Read' ? singleBook.wasRead : bookData[1];
+        bookData[0] === 'Read' ? singleBook.wasRead() : bookData[1];
       books.appendChild(dataBody);
       tableProperties.appendChild(props);
     });
@@ -38,5 +67,4 @@ function viewLibrary() {
 }
 
 const hobbit = new Books('The Hobbit', 'J.R.R Tolkien', 300, false);
-addToLibrary(hobbit);
 viewLibrary();
