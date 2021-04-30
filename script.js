@@ -1,10 +1,11 @@
 let myLibrary = [];
 
-submitBookForm.addEventListener('click', addToLibrary);
+// document
+//   .getElementById('submitFormButton')
+//   .addEventListener('click', addToLibrary);
+document.getElementById('bookInput').addEventListener('submit', addToLibrary);
 
-showFormButton = document
-  .getElementById('showForm')
-  .addEventListener('click', showForm);
+document.getElementById('showForm').addEventListener('click', showForm);
 function showForm() {
   if (addFormContainer.style.display == 'none') {
     addFormContainer.style.display = 'grid';
@@ -34,10 +35,14 @@ Books.prototype.wasRead = function () {
   return this.Read ? 'Already read.' : 'Still unread.';
 };
 
-function addToLibrary() {
+function addToLibrary(e) {
+  e.preventDefault();
   const submitForm = document.querySelectorAll('#bookInput input');
   newBook = new Books();
   submitForm.forEach((x) => {
+    if (x.value === '') {
+      return;
+    }
     if (x.id === 'Read') {
       newBook[x.id] = x.checked;
     } else {
