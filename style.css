@@ -1,7 +1,13 @@
 table,
 td {
-  margin: 1rem;
-  border: 1px solid #333;
+  border: 2px solid #441f0b;
+  padding: 0.3rem;
+  width: 30rem;
+  margin-top: 1rem;
+  background-color: #fdedd8;
+}
+td {
+  background-color: white;
 }
 
 body {
@@ -10,20 +16,22 @@ body {
   height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 14px;
+  color: #3a1607;
 }
 #container {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  margin: 2rem 2rem;
+  margin: 2rem;
 }
 
 .formContainer {
-  background-color: gainsboro;
+  background-color: #fdedd8;
   justify-items: center;
   align-items: center;
-  max-width: 30rem;
+  width: 24rem;
   padding: 0.5rem;
+  border: 1px solid #441f0b;
 }
 
 form {
@@ -32,10 +40,13 @@ form {
 }
 input {
   margin: 2px;
+  background-color: white;
+  border: 1px solid #441f0b;
 }
 button {
-  background-color: white;
-  border: black solid 1px;
+  background-color: #fdedd8;
+  border: #441f0b solid 1px;
   font-size: 1.2rem;
   margin: 0.5rem;
+  box-shadow: 1px 1px 3px #441f0ba6;
 }

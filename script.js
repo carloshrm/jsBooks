@@ -71,4 +71,5 @@ function viewLibrary() {
 function clearForm() {}
 
 const hobbit = new Books('The Hobbit', 'J.R.R Tolkien', 300, false);
+myLibrary.push(hobbit);
 viewLibrary();
