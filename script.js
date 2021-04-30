@@ -3,6 +3,7 @@ let myLibrary = [];
 // document
 //   .getElementById('submitFormButton')
 //   .addEventListener('click', addToLibrary);
+const formData = document.querySelectorAll('#bookInput input');
 document.getElementById('bookInput').addEventListener('submit', addToLibrary);
 
 document.getElementById('showForm').addEventListener('click', showForm);
@@ -37,12 +38,9 @@ Books.prototype.wasRead = function () {
 
 function addToLibrary(e) {
   e.preventDefault();
-  const submitForm = document.querySelectorAll('#bookInput input');
   newBook = new Books();
-  submitForm.forEach((x) => {
-    if (x.value === '') {
-      return;
-    }
+  formData.forEach((x) => {
+    if (x.id === 'submitFormButton') return;
     if (x.id === 'Read') {
       newBook[x.id] = x.checked;
     } else {
@@ -70,6 +68,7 @@ function viewLibrary() {
     tableBody.appendChild(books);
   });
 }
+function clearForm() {}
 
 const hobbit = new Books('The Hobbit', 'J.R.R Tolkien', 300, false);
 viewLibrary();
