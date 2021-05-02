@@ -14,11 +14,30 @@
         <div id="addFormContainer" class="formContainer" style="display: none">
           <form action="" method="get" id="bookInput">
             <label for="Title">Title</label>
-            <input type="text" name="Title" id="Title" required />
+            <input
+              type="text"
+              name="Title"
+              id="Title"
+              required
+              maxlength="12"
+            />
             <label for="Author">Author</label>
-            <input type="text" name="Author" id="Author" required />
+            <input
+              type="text"
+              name="Author"
+              id="Author"
+              required
+              maxlength="12"
+            />
             <label for="Pages">Pages</label>
-            <input type="number" name="Pages" id="Pages" required />
+            <input
+              type="number"
+              name="Pages"
+              id="Pages"
+              required
+              min="0"
+              max="5000"
+            />
 
             <span>Have you read it yet?</span>
             <input type="checkbox" name="Read" id="Read" unchecked />
