@@ -2,9 +2,10 @@ table,
 td {
   border: 2px solid #441f0b;
   padding: 0.3rem;
-  width: 30rem;
+  max-width: fit-content;
   margin-top: 1rem;
   background-color: #fdedd8;
+  text-align: center;
 }
 td {
   background-color: white;
@@ -30,7 +31,7 @@ body {
   background-color: #fdedd8;
   justify-items: center;
   align-items: center;
-  width: 24rem;
+  width: fit-content;
   padding: 0.5rem;
   border: 1px solid #441f0b;
 }
@@ -45,9 +46,17 @@ input {
   border: 1px solid #441f0b;
 }
 button {
-  background-color: #fdedd8;
+  background-color: white;
   border: #441f0b solid 1px;
   font-size: 1.2rem;
   margin: 0.5rem;
-  box-shadow: 1px 1px 3px #441f0ba6;
+}
+
+#switchButton {
+  font-size: 12px;
+  margin: 0 5px 0 5px;
+  padding: 0 10px 0 10px;
+  color: white;
+  background-color: #441f0b;
+  box-shadow: 1px 1px 4px #441f0b81;
 }

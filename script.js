@@ -66,8 +66,14 @@ function viewLibrary() {
       headProperties.textContent = bookData[0];
       tableProperties.appendChild(headProperties);
       let dataBody = document.createElement('td');
-      dataBody.textContent =
-        bookData[0] === 'Read' ? singleBook.wasRead() : bookData[1];
+
+      if (bookData[0] === 'Read') {
+        dataBody.textContent = singleBook.wasRead();
+        if (!bookData[1]) dataBody.appendChild(makeSwitchButton(singleBook));
+      } else {
+        dataBody.textContent = bookData[1];
+      }
+
       books.appendChild(dataBody);
     });
     tableBody.appendChild(books);
@@ -82,6 +88,16 @@ function viewLibrary() {
     });
     removeButton.innerText = 'Remove';
     return removeButton;
+  }
+  function makeSwitchButton(singleBook) {
+    let switchButton = document.createElement('button');
+    switchButton.id = 'switchButton';
+    switchButton.addEventListener('click', () => {
+      singleBook.setRead();
+      viewLibrary();
+    });
+    switchButton.innerText = 'Read it!';
+    return switchButton;
   }
 }
 
