@@ -1,12 +1,9 @@
 let myLibrary = [];
 
-// document
-//   .getElementById('submitFormButton')
-//   .addEventListener('click', addToLibrary);
 const formData = document.querySelectorAll('#bookInput input');
 document.getElementById('bookInput').addEventListener('submit', addToLibrary);
-
 document.getElementById('showForm').addEventListener('click', showForm);
+
 function showForm() {
   if (addFormContainer.style.display == 'none') {
     addFormContainer.style.display = 'grid';
@@ -22,12 +19,6 @@ class Books {
     this.Pages = pages;
     this.Read = read;
   }
-  // get info() {
-  //   return `${this.title}, by ${this.author}. ${this.pages} pages. ${this.wasRead}`;
-  // }
-  // get wasRead() {
-  //   return this.Read ? 'Already read.' : 'Still unread.';
-  // }
 }
 Books.prototype.info = function () {
   return `${this.title}, by ${this.author}. ${this.pages} pages. ${this.wasRead}`;
@@ -58,9 +49,11 @@ function addToLibrary(e) {
 
 function viewLibrary() {
   tableBody.innerHTML = '';
+
   myLibrary.forEach(function (singleBook) {
-    tableProperties.innerHTML = '';
     let books = document.createElement('tr');
+    tableProperties.innerHTML = '';
+
     Object.entries(singleBook).forEach((bookData) => {
       let headProperties = document.createElement('td');
       headProperties.textContent = bookData[0];
@@ -73,9 +66,9 @@ function viewLibrary() {
       } else {
         dataBody.textContent = bookData[1];
       }
-
       books.appendChild(dataBody);
     });
+
     tableBody.appendChild(books);
     books.appendChild(makeRemoveButton(singleBook));
   });

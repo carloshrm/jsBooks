@@ -1,54 +1,75 @@
-table,
-td {
-  border: 2px solid #441f0b;
-  padding: 0.3rem;
+:root {
+  --lightBGColor: #c7cedf;
+  --darkBGColor: #002a29;
+  --borderColor: #4d2a16;
+  --textColor: white;
+  --altBorderColor: #007a79;
+}
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+table {
+  padding: 0.2rem;
   max-width: fit-content;
   margin-top: 1rem;
-  background-color: #fdedd8;
-  text-align: center;
+  border: 2px solid var(--borderColor);
+  background-color: var(--lightBGColor);
 }
 td {
   background-color: white;
+  border: 2px solid var(--altBorderColor);
+  text-align: center;
+  padding: 0.5rem;
 }
 
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 14px;
-  color: #3a1607;
-  background-color: #3a1607;
+  color: black;
+
+  background-color: white;
 }
 #container {
+  background-color: var(--darkBGColor);
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  width: fit-content;
+  align-items: center;
+  min-height: fit-content;
+  padding: 3rem;
   margin: 2rem;
 }
 
 .formContainer {
-  background-color: #fdedd8;
+  background-color: var(--lightBGColor);
   justify-items: center;
   align-items: center;
-  width: fit-content;
   padding: 0.5rem;
-  border: 1px solid #441f0b;
+  border: 2px solid var(--borderColor);
 }
 
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+#bookInput {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
 }
+
 input {
-  margin: 2px;
+  margin: 0.3rem;
+  padding: 4px;
   background-color: white;
-  border: 1px solid #441f0b;
+  border: 1px solid var(--altBorderColor);
 }
+
 button {
-  background-color: white;
-  border: #441f0b solid 1px;
-  font-size: 1.2rem;
+  background-color: var(--darkBGColor);
+  border: 1px solid var(--borderColor);
+  box-shadow: 1px 1px 2px var(--darkBGColor);
+  color: var(--textColor);
+  font-size: 1rem;
   margin: 0.5rem;
 }
 
@@ -56,7 +77,15 @@ button {
   font-size: 12px;
   margin: 0 5px 0 5px;
   padding: 0 10px 0 10px;
-  color: white;
-  background-color: #441f0b;
-  box-shadow: 1px 1px 4px #441f0b81;
+}
+#showForm {
+  font-size: 1.2rem;
+  background-color: var(--lightBGColor);
+  border: 1px solid white;
+  color: var(--darkBGColor);
+}
+
+h1 {
+  color: var(--textColor);
+  text-shadow: 1px 1px 2px black;
 }

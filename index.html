@@ -9,11 +9,13 @@
   </head>
   <body>
     <div id="container">
-      <div id="addContainer">
-        <button id="showForm">Add a Book</button>
-        <div id="addFormContainer" class="formContainer" style="display: none">
-          <form action="" method="get" id="bookInput">
-            <label for="Title">Title</label>
+      <h1>A simple library - Track your collection.</h1>
+
+      <button id="showForm">Add a Book</button>
+      <div id="addFormContainer" class="formContainer" style="display: none">
+        <form action="" method="get" id="bookInput">
+          <div>
+            <label for="Title">Title: </label>
             <input
               type="text"
               name="Title"
@@ -21,7 +23,9 @@
               required
               maxlength="12"
             />
-            <label for="Author">Author</label>
+          </div>
+          <div>
+            <label for="Author">Author: </label>
             <input
               type="text"
               name="Author"
@@ -29,7 +33,9 @@
               required
               maxlength="12"
             />
-            <label for="Pages">Pages</label>
+          </div>
+          <div>
+            <label for="Pages">Number of Pages: </label>
             <input
               type="number"
               name="Pages"
@@ -38,13 +44,17 @@
               min="0"
               max="5000"
             />
-
+          </div>
+          <div>
             <span>Have you read it yet?</span>
             <input type="checkbox" name="Read" id="Read" unchecked />
-            <input type="submit" value="Save" id="submitFormButton" />
-          </form>
-        </div>
+            <span>Yes</span>
+          </div>
+
+          <input type="submit" value="Save" id="submitFormButton" />
+        </form>
       </div>
+
       <div id="tableContainer">
         <table>
           <thead>
