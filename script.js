@@ -58,6 +58,13 @@ function addBookFromForm(e) {
 function viewLibrary() {
   tableBody.innerHTML = '';
 
+  if (myLibrary.length === 0) {
+    let empty = document.createElement('td');
+    empty.innerText = 'Empty';
+    tableProperties.replaceChildren(empty);
+
+    return;
+  }
   myLibrary.forEach(function (singleBook) {
     let books = document.createElement('tr');
     tableProperties.innerHTML = '';
@@ -81,6 +88,7 @@ function viewLibrary() {
     books.appendChild(makeRemoveButton(singleBook));
   });
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+
   function makeRemoveButton(singleBook) {
     let removeButton = document.createElement('button');
     removeButton.addEventListener('click', () => {
@@ -115,6 +123,11 @@ function checkStorage() {
 function libraryFromStorage() {
   let tempLibrary = JSON.parse(localStorage.getItem('myLibrary'));
   tempLibrary.forEach((entry) => {
+    let tempBook = {};
+    Object.entries(entry).forEach((data) => {
+      console.log(data[0]);
+    });
+
     myLibrary.push(
       new Books(entry.Title, entry.Author, entry.Pages, entry.Read)
     );
