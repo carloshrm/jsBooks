@@ -55,25 +55,28 @@ function addBookFromForm(e) {
   viewLibrary();
 }
 
-function viewLibrary() {
-  tableBody.innerHTML = '';
-
+function checkEmptyLibrary() {
   if (myLibrary.length === 0) {
-    let empty = document.createElement('td');
+    const empty = document.createElement('td');
     empty.innerText = 'Empty';
     tableProperties.replaceChildren(empty);
-
     return;
   }
+}
+
+function viewLibrary() {
+  tableBody.innerHTML = '';
+  checkEmptyLibrary();
+
   myLibrary.forEach(function (singleBook) {
-    let books = document.createElement('tr');
+    const books = document.createElement('tr');
     tableProperties.innerHTML = '';
 
     Object.entries(singleBook).forEach((bookData) => {
-      let headProperties = document.createElement('td');
+      const headProperties = document.createElement('td');
       headProperties.textContent = bookData[0];
       tableProperties.appendChild(headProperties);
-      let dataBody = document.createElement('td');
+      const dataBody = document.createElement('td');
 
       if (bookData[0] === 'Read') {
         dataBody.textContent = singleBook.wasRead();
@@ -90,7 +93,7 @@ function viewLibrary() {
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 
   function makeRemoveButton(singleBook) {
-    let removeButton = document.createElement('button');
+    const removeButton = document.createElement('button');
     removeButton.addEventListener('click', () => {
       myLibrary.splice(myLibrary.indexOf(singleBook), 1);
       viewLibrary();
@@ -98,8 +101,9 @@ function viewLibrary() {
     removeButton.innerText = 'Remove';
     return removeButton;
   }
+
   function makeSwitchButton(singleBook) {
-    let switchButton = document.createElement('button');
+    const switchButton = document.createElement('button');
     switchButton.id = 'switchButton';
     switchButton.addEventListener('click', () => {
       singleBook.setRead();
@@ -121,17 +125,13 @@ function checkStorage() {
 }
 
 function libraryFromStorage() {
-  let tempLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  const tempLibrary = JSON.parse(localStorage.getItem('myLibrary'));
   tempLibrary.forEach((entry) => {
-    let tempBook = {};
+    const tempBook = new Books();
     Object.entries(entry).forEach((data) => {
-      console.log(data[0]);
+      tempBook[data[0]] = data[1];
     });
-
-    myLibrary.push(
-      new Books(entry.Title, entry.Author, entry.Pages, entry.Read)
-    );
+    myLibrary.push(tempBook);
   });
 }
-
 checkStorage();
