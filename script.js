@@ -1,17 +1,3 @@
-let myLibrary = [];
-
-const formData = document.querySelectorAll('#bookInput input');
-document.getElementById('bookInput').addEventListener('submit', addToLibrary);
-document.getElementById('showForm').addEventListener('click', showForm);
-
-function showForm() {
-  if (addFormContainer.style.display == 'none') {
-    addFormContainer.style.display = 'grid';
-  } else {
-    addFormContainer.style.display = 'none';
-  }
-}
-
 class Books {
   constructor(title, author, pages, read) {
     this.Title = title;
@@ -30,7 +16,29 @@ Books.prototype.setRead = function () {
   this.Read = true;
 };
 
-function addToLibrary(e) {
+const formData = document.querySelectorAll('#bookInput input');
+document
+  .getElementById('bookInput')
+  .addEventListener('submit', addBookFromForm);
+document.getElementById('showForm').addEventListener('click', showForm);
+clearButton.addEventListener('click', clearLibrary);
+let myLibrary = [];
+
+function showForm() {
+  if (addFormContainer.style.display == 'none') {
+    addFormContainer.style.display = 'grid';
+  } else {
+    addFormContainer.style.display = 'none';
+  }
+}
+
+function clearLibrary() {
+  myLibrary = [];
+  localStorage.clear();
+  checkStorage();
+}
+
+function addBookFromForm(e) {
   e.preventDefault();
   newBook = new Books();
   formData.forEach((x) => {
@@ -72,7 +80,7 @@ function viewLibrary() {
     tableBody.appendChild(books);
     books.appendChild(makeRemoveButton(singleBook));
   });
-
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
   function makeRemoveButton(singleBook) {
     let removeButton = document.createElement('button');
     removeButton.addEventListener('click', () => {
@@ -94,6 +102,23 @@ function viewLibrary() {
   }
 }
 
-const hobbit = new Books('The Hobbit', 'J.R.R Tolkien', 300, false);
-myLibrary.push(hobbit);
-viewLibrary();
+function checkStorage() {
+  if (localStorage.getItem('myLibrary') === null) {
+    myLibrary[0] = new Books('The Hobbit', 'J.R.R Tolkien', 300, false);
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+  } else {
+    libraryFromStorage();
+  }
+  viewLibrary();
+}
+
+function libraryFromStorage() {
+  let tempLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  tempLibrary.forEach((entry) => {
+    myLibrary.push(
+      new Books(entry.Title, entry.Author, entry.Pages, entry.Read)
+    );
+  });
+}
+
+checkStorage();

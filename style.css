@@ -37,7 +37,6 @@ body {
   flex-flow: column;
   width: fit-content;
   align-items: center;
-  min-height: fit-content;
   padding: 3rem;
   margin: 2rem;
 }
@@ -59,9 +58,12 @@ body {
 
 input {
   margin: 0.3rem;
-  padding: 4px;
+  padding: 2px;
   background-color: white;
   border: 1px solid var(--altBorderColor);
+}
+form #submitFormButton {
+  padding: 0.3rem 2rem;
 }
 
 button {
