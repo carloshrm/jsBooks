@@ -80,7 +80,8 @@ button {
   margin: 0 5px 0 5px;
   padding: 0 10px 0 10px;
 }
-#showForm {
+#showForm,
+#clearButton {
   font-size: 1.2rem;
   background-color: var(--lightBGColor);
   border: 1px solid white;
