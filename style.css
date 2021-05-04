@@ -35,7 +35,7 @@ body {
   background-color: var(--darkBGColor);
   display: flex;
   flex-flow: column;
-  width: fit-content;
+  width: max-content;
   align-items: center;
   padding: 3rem;
   margin: 2rem;
