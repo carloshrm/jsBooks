@@ -9,7 +9,6 @@
 
 table {
   padding: 0.2rem;
-  max-width: fit-content;
   margin-top: 1rem;
   border: 2px solid var(--borderColor);
   background-color: var(--lightBGColor);
@@ -29,6 +28,7 @@ body {
   color: black;
   text-align: center;
   background-color: white;
+  transition: all 1s;
 }
 #container {
   background-color: var(--darkBGColor);
@@ -43,7 +43,6 @@ body {
 .formContainer {
   background-color: var(--lightBGColor);
   justify-items: center;
-
   padding: 0.5rem;
   border: 2px solid var(--borderColor);
 }
